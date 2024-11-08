@@ -1,0 +1,26 @@
+#slider {
+  -webkit-appearance: none;
+  width: 100%;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+#slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 2.4rem;
+  height: 2.4rem;
+  background-color: #35e38c;
+  background: url('./icon-slider.svg') center center no-repeat, #35e38c;
+  background-size: 60%;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+#slider::-webkit-slider-thumb:hover {
+  box-shadow: 0px 10px 15px #35e38c;
+}

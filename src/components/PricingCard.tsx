@@ -1,5 +1,6 @@
 import { useTheme } from "@/context/ThemeProvider";
 import Image from "next/image";
+import Slider from "@/components/Slider/Slider"
 import { useState } from "react";
 
 type PricingCardProps = {
@@ -23,7 +24,7 @@ const PricingCard = ({ handleToggleChange, isYearly }: PricingCardProps) => {
         </div>
       </div>
 
-      
+      <Slider price={price} setPrice={setPrice}/>
 
       <div className="md:hidden items-center gap-1 flex mx-auto font-semibold">
         <div>
