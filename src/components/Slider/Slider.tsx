@@ -10,6 +10,9 @@ const Slider = ({ price, setPrice }: SlideProps) => {
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const floatPrice = parseFloat((parseInt(e.target.value) / 100).toFixed(2));
     setPrice(floatPrice);
+  
+    const slider = e.target;
+    slider.style.setProperty('--percent', `${(parseInt(slider.value) / 3200) * 100}`);
   };
 
   return (
