@@ -5,12 +5,12 @@
 1. **Theme Toggle Button**
    - Adjusts background and text colors throughout the page according to the selected theme.
 
-![Light Mode Pricing Component](public/showcase/light-pricing-component.jpeg)
+![light](https://github.com/user-attachments/assets/d06089eb-cd9f-482b-94f6-a903a207ca79)
 
    - Positioned in the top-right corner of the screen.
    - Switches the UI between **light** and **dark** modes.
 
-![Dark Mode Pricing Component](public/showcase/dark-pricing-component.jpeg)
+![dark](https://github.com/user-attachments/assets/a7cdd8dd-7363-4406-95e3-37e74b1d48ae)
 
 This project is a **Next.js** app utilizing **TypeScript** and **Tailwind CSS**. It features a dynamic pricing component with a theme toggle.
 
@@ -22,3 +22,7 @@ This project is a **Next.js** app utilizing **TypeScript** and **Tailwind CSS**.
    - The UI adapts responsively, providing a clean layout for various screen sizes. 
 
 The images above show the component in both light and dark modes.
+
+3. **Webpage working video**:
+
+   https://github.com/user-attachments/assets/e76865b5-85db-4ac3-b6b7-eb0b42166ca5
