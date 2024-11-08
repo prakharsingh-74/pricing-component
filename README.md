@@ -25,4 +25,4 @@ The images above show the component in both light and dark modes.
 
 3. **Webpage working video**:
 
-   https://github.com/user-attachments/assets/e76865b5-85db-4ac3-b6b7-eb0b42166ca5
+   https://github.com/user-attachments/assets/47fbb395-0e8b-47ea-afdd-4a1dd053b6ec
