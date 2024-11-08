@@ -1,6 +1,6 @@
 import { useTheme } from "@/context/ThemeProvider";
 import Image from "next/image";
-import Slider from "@/components/Slider/Slider"
+import Slider from "@/components/Slider/Slider";
 import { useState } from "react";
 
 type PricingCardProps = {
@@ -10,12 +10,13 @@ type PricingCardProps = {
 
 const PricingCard = ({ handleToggleChange, isYearly }: PricingCardProps) => {
   const { mode } = useTheme();
-  const [price, setPrice] = useState<number>(16);
+  const [price, setPrice] = useState<number>(16); // Default price
+  const [pageViews, setPageViews] = useState<string>("100K"); // Default page view
+
   return (
     <div className={`mx-auto sm:w-[80%] md:w-[70%] lg:w-[50%] xl:w-[45%] rounded-lg md:px-14 px-6 py-6 ${mode === 'light' ? 'bg-white shadow-xl' : 'bg-[#1e1e2f] shadow-gray-700 shadow-xl'} flex flex-col gap-8`}>
-   
       <div className={`text-gray-400 text-sm flex justify-between font-semibold items-center ${mode === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>
-        <div className="md:mx-0 mx-auto">100K PAGEVIEWS</div>
+        <div className="md:mx-0 mx-auto">{pageViews} PAGEVIEWS</div>
         <div className="md:flex items-center gap-1 hidden">
           <div>
             <span className={`text-3xl ${mode === 'light' ? 'text-[#322463]' : 'text-[#c9c9d8]'}`}>${price}</span>
@@ -24,7 +25,8 @@ const PricingCard = ({ handleToggleChange, isYearly }: PricingCardProps) => {
         </div>
       </div>
 
-      <Slider price={price} setPrice={setPrice}/>
+      {/* Pass setPrice and setPageViews to the Slider component */}
+      <Slider price={price} setPrice={setPrice} setPageViews={setPageViews} />
 
       <div className="md:hidden items-center gap-1 flex mx-auto font-semibold">
         <div>
@@ -33,7 +35,6 @@ const PricingCard = ({ handleToggleChange, isYearly }: PricingCardProps) => {
         <div>/month</div>
       </div>
 
-    
       <div className={`flex justify-center items-center gap-2 font-medium md:text-sm text-[10px] md:mt-6 mt-3 ${mode === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
         <div>Monthly Billing</div>
         <div className="relative">
@@ -61,7 +62,6 @@ const PricingCard = ({ handleToggleChange, isYearly }: PricingCardProps) => {
         </div>
       </div>
 
-   
       <div className="flex md:flex-row flex-col md:gap-10 gap-6 justify-between mt-10">
         <div className={`text-left text-sm mx-auto md:mx-0 ${mode === 'light' ? 'text-gray-500' : 'text-gray-400'}`}>
           <ul>
@@ -101,9 +101,11 @@ const PricingCard = ({ handleToggleChange, isYearly }: PricingCardProps) => {
           </ul>
         </div>
         <div>
-          <button className={`px-5 rounded-full py-2 font-medium text-white md:text-lg text-sm ${mode === 'light' ? 'bg-[#20224e]' : 'bg-[#3e3e52]'}`}>
-            Start my trial
-          </button>
+        <button
+  className="bg-[#20224e] text-white font-medium   py-4 px-10 rounded-full w-full max-w-xl mx-auto transition-transform transform hover:scale-105"
+>
+  Start my trial
+</button>
         </div>
       </div>
     </div>

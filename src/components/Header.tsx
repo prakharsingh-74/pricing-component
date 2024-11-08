@@ -13,6 +13,7 @@ const Header = () => {
             src="/images/pattern-circles.svg"
             alt="Background Pattern"
             layout="fill"
+            priority
             className={`${mode === 'light' ? "opacity-100" : "opacity-20"} object-contain`}
           />
         </div>
