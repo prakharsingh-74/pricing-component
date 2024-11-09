@@ -1,7 +1,7 @@
 import { useTheme } from "@/context/ThemeProvider";
 import Image from "next/image";
 import Slider from "@/components/Slider/Slider";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type PricingCardProps = {
   handleToggleChange: () => void;
@@ -10,27 +10,31 @@ type PricingCardProps = {
 
 const PricingCard = ({ handleToggleChange, isYearly }: PricingCardProps) => {
   const { mode } = useTheme();
-  const [price, setPrice] = useState<number>(16); // Default price
-  const [pageViews, setPageViews] = useState<string>("100K"); // Default page view
+  const [basePrice, setBasePrice] = useState<number>(16);
+  const [price, setPrice] = useState<number>(16);
+  const [pageViews, setPageViews] = useState<string>("100K");
+
+  useEffect(() => {
+    setPrice(isYearly ? basePrice * 0.75 : basePrice);
+  }, [isYearly, basePrice]);
 
   return (
-    <div className={`mx-auto sm:w-[80%] md:w-[70%] lg:w-[50%] xl:w-[45%] rounded-lg md:px-14 px-6 py-6 ${mode === 'light' ? 'bg-white shadow-xl' : 'bg-[#1e1e2f] shadow-gray-700 shadow-xl'} flex flex-col gap-8`}>
+    <div className={`mx-auto sm:w-[80%] md:w-[70%] lg:w-[50%] xl:w-[45%] rounded-lg px-6 py-6 ${mode === 'light' ? 'bg-white shadow-xl' : 'bg-[#1e1e2f] shadow-gray-700 shadow-xl'} flex flex-col gap-8`}>
       <div className={`text-gray-400 text-sm flex justify-between font-semibold items-center ${mode === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>
         <div className="md:mx-0 mx-auto">{pageViews} PAGEVIEWS</div>
         <div className="md:flex items-center gap-1 hidden">
           <div>
-            <span className={`text-3xl ${mode === 'light' ? 'text-[#322463]' : 'text-[#c9c9d8]'}`}>${price}</span>
+            <span className={`text-3xl ${mode === 'light' ? 'text-[#322463]' : 'text-[#c9c9d8]'}`}>${price.toFixed(2)}</span>
           </div>
           <div>/month</div>
         </div>
       </div>
 
-      {/* Pass setPrice and setPageViews to the Slider component */}
-      <Slider price={price} setPrice={setPrice} setPageViews={setPageViews} />
+      <Slider price={basePrice} setPrice={setBasePrice} setPageViews={setPageViews} />
 
       <div className="md:hidden items-center gap-1 flex mx-auto font-semibold">
         <div>
-          <span className={`text-3xl ${mode === 'light' ? 'text-[#322463]' : 'text-[#d3d3d9]'}`}>${price}</span>
+          <span className={`text-3xl ${mode === 'light' ? 'text-[#322463]' : 'text-[#d3d3d9]'}`}>${price.toFixed(2)}</span>
         </div>
         <div>/month</div>
       </div>
@@ -47,10 +51,10 @@ const PricingCard = ({ handleToggleChange, isYearly }: PricingCardProps) => {
           />
           <label
             htmlFor="billing-toggle"
-            className={`flex items-center cursor-pointer md:w-12 md:h-6 w-8 h-4 ${mode === 'light' ? "bg-gray-200" :  "bg-gray-700"} rounded-full shadow-inner transition duration-200`}
+            className={`flex items-center cursor-pointer md:w-12 md:h-6 w-8 h-4 ${mode === 'light' ? "bg-gray-200" : "bg-gray-700"} rounded-full shadow-inner transition duration-200`}
           >
             <span
-              className={`absolute w-[50%] h-[95%] ${mode === 'light' ? "bg-gray-300" :  "bg-gray-400"} rounded-full shadow transition duration-200 transform ${isYearly ? "translate-x-6" : "translate-x-0"}`}
+              className={`absolute w-[50%] h-[95%] ${mode === 'light' ? "bg-gray-300" : "bg-gray-400"} rounded-full shadow transition duration-200 transform ${isYearly ? "translate-x-6" : "translate-x-0"}`}
             ></span>
           </label>
         </div>
@@ -67,45 +71,28 @@ const PricingCard = ({ handleToggleChange, isYearly }: PricingCardProps) => {
           <ul>
             <li>
               <div className="flex gap-2 items-center">
-                <Image
-                  src={"/images/icon-check.svg"}
-                  alt="check"
-                  width={10}
-                  height={10}
-                />
+                <Image src={"/images/icon-check.svg"} alt="check" width={10} height={10} />
                 Unlimited Websites
               </div>
             </li>
             <li>
               <div className="flex gap-2 items-center">
-                <Image
-                  src={"/images/icon-check.svg"}
-                  alt="check"
-                  width={10}
-                  height={10}
-                />
+                <Image src={"/images/icon-check.svg"} alt="check" width={10} height={10} />
                 100% data ownership
               </div>
             </li>
             <li>
               <div className="flex gap-2 items-center">
-                <Image
-                  src={"/images/icon-check.svg"}
-                  alt="check"
-                  width={10}
-                  height={10}
-                />
+                <Image src={"/images/icon-check.svg"} alt="check" width={10} height={10} />
                 Email Reports
               </div>
             </li>
           </ul>
         </div>
         <div>
-        <button
-  className="bg-[#20224e] text-white font-medium   py-4 px-10 rounded-full w-full max-w-xl mx-auto transition-transform transform hover:scale-105"
->
-  Start my trial
-</button>
+          <button className="bg-[#20224e] text-white font-medium py-4 px-10 rounded-full w-full max-w-xl mx-auto transition-transform transform hover:scale-105">
+            Start my trial
+          </button>
         </div>
       </div>
     </div>

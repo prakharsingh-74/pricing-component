@@ -16,14 +16,11 @@ const Pricing = () => {
   return (
     <>
       <ThemeToggleButton />
-      <div className={`relative md:w-[90%] md:h-[80%] w-full h-full  mx-auto rounded-xl shadow-2xl p-8 ${mode === 'light' ? "bg-white" : "bg-[#1e1e2f] shadow-gray-700"}`}>
+      <div className={`relative md:w-[90%] md:h-[80%] w-full h-full mx-auto rounded-xl shadow-2xl p-8 ${mode === 'light' ? "bg-white" : "bg-[#1e1e2f] shadow-gray-700"}`}>
         <div className={`w-full h-[50%] ${mode === 'light' ? 'bg-[#f5f8f9]' : "bg-[#222234]"} rounded-t-xl rounded-bl-[120px] absolute top-0 left-0`}></div>
-        <div className={`h-1/2 ${mode === 'light' ? "text-black" : "text-[#e0e0e0]"} relative text-center flex flex-col gap-10 `}>
+        <div className={`h-1/2 ${mode === 'light' ? "text-black" : "text-[#e0e0e0]"} relative text-center flex flex-col gap-10`}>
           <Header />
-          <PricingCard
-            handleToggleChange={handleToggleChange}
-            isYearly={isYearly}
-          />
+          <PricingCard handleToggleChange={handleToggleChange} isYearly={isYearly} />
         </div>
       </div>
     </>
